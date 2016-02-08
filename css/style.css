@@ -1,19 +1,18 @@
 /* Global Styles */
 
-
-
 html, body {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  font-family: 'Raleway', sans-serif;
-  font-size: 15px;
-  line-height: 1;
-  font-weight: 400;
-  border: none;
-  color:#2A2929;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 400;
+    border: none;
+    color:#2A2929;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif;
@@ -45,49 +44,96 @@ a:hover,  a:active,  a:focus {
   outline: none;
 }
 
-.vert-text {
-  vertical-align: top;
-  text-align: center;
-  padding-top: 50px;
+/* Custom Button Styles */
 
+
+/* Side Menu */
+
+#sidebar-wrapper {
+  margin-right: -250px;
+  right: 0;
+  width: 250px;
+  background: #000;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav {
+  width: 233px;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  color: #999;
+  font-size:1.5em;
+  padding-top:1.5em;
+  padding-left: 1.2em;
 
 }
 
-.vert-text h1 {
-  font-size: 5.0em;
-  font-weight: 700;
-  color:#FFF;
+.sidebar-nav li a:hover {
+  color: #fff;
 
+}
+
+#menu-toggle {
+  z-index: 9999;
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  color: #9999;
+  cursor:pointer;
+}
+
+#sidebar-wrapper.active {
+  right: 230px;
+  width: 230px;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.toggle {
+  margin: 5px 5px 0 0;
+}
+
+
+/* Header */
+
+.vert-text {
+  display: table-cell;
+  vertical-align: top;
+  text-align: center;
+  padding-top: 28em;
+}
+
+.vert-text h1 {
+  font-size: 4.0em;
+  font-weight: 700;
+  color:#FFFFFF;
 }
 
 .vert-text h2{
   padding-top: 20px;
-  font-size: 2.5em;
-  font-weight: 600;
-  color:#FFF;
-}
-
-.vert-text h4{
-  padding:10px;
-  font-size: 1.5em;
-  font-weight: 400;
-  color:#FFF;
-}
-
-.btn-default {
-  padding: 10px;
-  background: none;
-  border : 2px solid #FFF;
-  font-size: 1.5em;
+  margin-bottom: 30px;
+  font-size: 2.0em;
   font-weight: 700;
-  color:#FFF;
-}
-
-.btn-default:hover{
-  color:black;
-  background-color: white;
-  border-color: white
-
+  color:#FFFFFF;
 }
 
 
@@ -98,9 +144,25 @@ a:hover,  a:active,  a:focus {
   height: 100%;
   width: 100%;
   position: relative;
-  background: url(../img/sf.jpg) center center;
+  background: url(../img/home.jpg) center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
+
+.vert-text {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+}
+
+.vert-text h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 4.5em;
+  font-weight: 700;
+}
+
