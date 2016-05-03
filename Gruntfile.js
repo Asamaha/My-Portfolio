@@ -1,74 +1,51 @@
-module.exports = function(grunt) {
+module.exports = function(grunt){
 
-    // Project configuration.
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        uglify: {
-            main: {
-                src: 'js/<%= pkg.name %>.js',
-                dest: 'js/<%= pkg.name %>.min.js'
-            }
-        },
-        less: {
-            expanded: {
-                options: {
-                    paths: ["css"]
-                },
-                files: {
-                    "css/<%= pkg.name %>.css": "less/<%= pkg.name %>.less"
-                }
-            },
-            minified: {
-                options: {
-                    paths: ["css"],
-                    cleancss: true
-                },
-                files: {
-                    "css/<%= pkg.name %>.min.css": "less/<%= pkg.name %>.less"
-                }
-            }
-        },
-        banner: '/*!\n' +
-            ' * <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-            ' * Copyright 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
-            ' */\n',
-        usebanner: {
-            dist: {
-                options: {
-                    position: 'top',
-                    banner: '<%= banner %>'
-                },
-                files: {
-                    src: ['css/<%= pkg.name %>.css', 'css/<%= pkg.name %>.min.css', 'js/<%= pkg.name %>.min.js']
-                }
-            }
-        },
-        watch: {
-            scripts: {
-                files: ['js/<%= pkg.name %>.js'],
-                tasks: ['uglify'],
-                options: {
-                    spawn: false,
-                },
-            },
-            less: {
-                files: ['less/*.less'],
-                tasks: ['less'],
-                options: {
-                    spawn: false,
-                }
-            },
-        },
-    });
+  grunt.initConfig({
+    clean: ['client/dist/'],
 
-    // Load the plugins.
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-banner');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    jshint: {
+      files: ['Gruntfile.js', 'client/app/*.js']
+    },
+    //'Gruntfile.js', 'client/app/*.js', 'server/**/*.js', 'test/**/*.js'
+    concat: {
+      options: {
+        separator: ';'
+      },
+      dist: {
+        src: ['client/app/**/*.js'],
+        dest: 'client/dist/built.js'
+      }
+    },
 
-    // Default task(s).
-    grunt.registerTask('default', ['uglify', 'less', 'usebanner']);
+    uglify: {
+      target: {
+        files: {
+          'client/dist/built.min.js': ['client/dist/built.js']
+        }
+      }
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+
+  grunt.registerTask('lint', [
+    'jshint'
+  ]);
+
+  grunt.registerTask('default', [
+    'clean',
+    'jshint',
+    'concat',
+    'uglify'
+  ]);
+
+  grunt.registerTask('build', [
+    'clean',
+    'concat',
+    'uglify'
+  ]);
 
 };
