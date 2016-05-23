@@ -1,2 +1,2 @@
 # MY PORTFOLIO
-ADAM SAMAHA
+I am a full-stack software engineer with  strong background in JavaScript and extensive experience working with technologies such as AngularJS on the front-end, as well as Node, Express, MongoDB and SQL on the back-end .I have experience building several full-stack applications using today’s most relevant technologies and frameworks.
